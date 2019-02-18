@@ -145,8 +145,15 @@ h3 {
 .languageContent {
     width: 24%;
     display: inline-block;
+    float: right;
 }
 
 .languageContent div {
     width: 170px !important;
+}
+
+.modifyEditorBackGround {
+    width: 20%;
+    display: inline-block;
+    float: right;
 }
