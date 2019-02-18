@@ -23,87 +23,14 @@
 
 <body>
 
+<#--顶部区域-->
 <div class="projectNav">
-
-    <div class="projectNames">
-        <select id="projectNameID" class="selectpicker multiple" title="项目名称" data-live-search="true">
-            <option>项目-1</option>
-            <option>项目-2</option>
-        </select>
-    </div>
-
-    <div class="nav-content">
-        <span class="nav-content-detail">
-		    <button type="button" id="button_conn_zkServer" class="btn btn-primary" onclick="">添加项目</button>
-        </span>
-        <span class="nav-content-detail">
-            <button type="button" id="button_refresh_page" class="btn btn-success">功能-2</button>
-        </span>
-        <span class="nav-content-detail">
-		    <button type="button" id="button_close_zkServer" class="btn btn-danger">功能-3</button>
-	    </span>
-    </div>
+    <#include "topArea.ftl">
 </div>
 
 <#--核心区域-->
 <div class="apiCore" id="apiCoreID">
-
-<#--API列表展示区域-->
-    <div class="apiListShowRegion" id="apiListShowRegion">
-
-    <#--API列表组-->
-        <ul class="list-group">
-            <a href="#" class="list-group-item active">
-                <span class="http_method_path" http_method_post="post">API-1</span>
-            </a>
-            <a href="#" class="list-group-item list-group-item-success">API-2</a>
-            <a href="#" class="list-group-item list-group-item-info">API-3</a>
-            <a href="#" class="list-group-item list-group-item-warning">API-4</a>
-            <a href="#" class="list-group-item list-group-item-danger">API-5</a>
-            <a href="#" class="list-group-item list-group-item-danger">API-6</a>
-            <a href="#" class="list-group-item list-group-item-danger">API-7</a>
-            <a href="#" class="list-group-item list-group-item-danger">API-8</a>
-            <a href="#" class="list-group-item list-group-item-danger">API-9</a>
-            <a href="#" class="list-group-item list-group-item-danger">API-10</a>
-            <a href="#" class="list-group-item list-group-item-danger">API-11</a>
-            <a href="#" class="list-group-item list-group-item-danger">API-12</a>
-            <a href="#" class="list-group-item list-group-item-danger">API-13</a>
-            <a href="#" class="list-group-item list-group-item-danger">API-14</a>
-            <a href="#" class="list-group-item list-group-item-danger">API-15</a>
-            <a href="#" class="list-group-item list-group-item-danger">API-16</a>
-            <a href="#" class="list-group-item list-group-item-danger">API-17</a>
-        </ul>
-
-    </div>
-
-<#--API中数据展示-->
-    <div class="apiDataShowRegion" id="apiDataShowRegion">
-
-        <div class="inPutParamInfoBut">
-            <button type="button" class="btn btn-warning btn-sm btn-block" id="inPutParamInfo">入参</button>
-        </div>
-        <div class="outParamInfoBut">
-            <button type="button" class="btn btn-primary btn-sm btn-block" id="outParamInfo">出参</button>
-        </div>
-        <div class="updateParamBut">
-            <button type="button" class="btn btn-danger btn-sm btn-block" id="updateParam">确定修改</button>
-        </div>
-
-        <div class="languageContent">
-            <select id="languageSelectID" class="selectpicker multiple" title="json" data-live-search="true">
-                <option>json</option>
-                <option>xml</option>
-            </select>
-        </div>
-
-    <#--页面编辑器绑定元素-->
-        <div id="paramContainer"></div>
-    </div>
-
-    <div class="apiInfoShowRegion" id="apiInfoShowRegion">
-
-    </div>
-
+    <#include "coreZone.ftl">
 </div>
 
 <#--页脚footer-->
@@ -117,6 +44,47 @@
 
 <#--点击右键事件-->
 <script>
+    // $(document).ready(function () {
+    //     //设置路径
+    //     require.config({paths: {'vs': '/static/monaco-editor/min/vs'}});
+    //
+    //     require(['vs/editor/editor.main'], function () {
+    //         mario.editor = monaco.editor.create(document.getElementById('paramContainer'), {
+    //             value: [
+    //                 '{',
+    //                 '  "properties": [',
+    //                 '    {',
+    //                 '      "defaultValue": true,',
+    //                 '      "name": "camel.component.jolt.enabled",',
+    //                 '      "description": "Enable jolt component",',
+    //                 '      "type": "java.lang.Boolean"',
+    //                 '    }',
+    //                 '  ]',
+    //                 '}'
+    //             ].join('\n'),
+    //             //支持语言
+    //             language: 'json',
+    //             //背景样式
+    //             theme: 'vs-dark',
+    //             //编辑器随浏览器窗口自动调整大小
+    //             automaticLayout: true,
+    //             //编辑器中文字的大小
+    //             fontSize: '16'
+    //         });
+    //
+    //         $(".selectpicker-modifyEditorBackGround").change(function (e) {
+    //             console.log(e.target.value);
+    //             changeTheme(this.selectedIndex);
+    //         });
+    //     });
+    // });
+
+    //切换编辑器背景
+    function changeTheme(theme) {
+        var newTheme = (theme === 1 ? 'vs-dark' : (theme === 0 ? 'vs' : 'hc-black'));
+        monaco.editor.setTheme(newTheme);
+    }
+
     new BootstrapMenu('.list-group-item', {
         fetchElementData: function (e) {
             // console.log("id : " + e[0].id);
@@ -136,16 +104,6 @@
             }
         }]
     });
-
-    function changeTheme(theme) {
-        var newTheme = (theme === 1 ? 'vs-dark' : ( theme === 0 ? 'vs' : 'hc-black' ));
-        if (editor) {
-            editor.updateOptions({ 'theme' : newTheme });
-        }
-        if (diffEditor) {
-            diffEditor.updateOptions({ 'theme': newTheme });
-        }
-    }
 
 </script>
 </body>
