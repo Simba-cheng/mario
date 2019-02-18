@@ -39,63 +39,18 @@
 </div>
 
 <script>
-    $('.selectpicker').selectpicker();
-</script>
-
-<#--点击右键事件-->
-<script>
-    // $(document).ready(function () {
-    //     //设置路径
-    //     require.config({paths: {'vs': '/static/monaco-editor/min/vs'}});
-    //
-    //     require(['vs/editor/editor.main'], function () {
-    //         mario.editor = monaco.editor.create(document.getElementById('paramContainer'), {
-    //             value: [
-    //                 '{',
-    //                 '  "properties": [',
-    //                 '    {',
-    //                 '      "defaultValue": true,',
-    //                 '      "name": "camel.component.jolt.enabled",',
-    //                 '      "description": "Enable jolt component",',
-    //                 '      "type": "java.lang.Boolean"',
-    //                 '    }',
-    //                 '  ]',
-    //                 '}'
-    //             ].join('\n'),
-    //             //支持语言
-    //             language: 'json',
-    //             //背景样式
-    //             theme: 'vs-dark',
-    //             //编辑器随浏览器窗口自动调整大小
-    //             automaticLayout: true,
-    //             //编辑器中文字的大小
-    //             fontSize: '16'
-    //         });
-    //
-    //         $(".selectpicker-modifyEditorBackGround").change(function (e) {
-    //             console.log(e.target.value);
-    //             changeTheme(this.selectedIndex);
-    //         });
-    //     });
-    // });
-
-    //切换编辑器背景
-    function changeTheme(theme) {
-        var newTheme = (theme === 1 ? 'vs-dark' : (theme === 0 ? 'vs' : 'hc-black'));
-        monaco.editor.setTheme(newTheme);
-    }
-
+    <#--点击右键事件-->
     new BootstrapMenu('.list-group-item', {
         fetchElementData: function (e) {
             // console.log("id : " + e[0].id);
             return e;
         },
         actions: [{
-            name: 'test1',
+            name: '新增API接口',
             onClick: function (e) {
             }
         }, {
-            name: 'test2',
+            name: '删除API接口',
             onClick: function (e) {
             }
         }, {

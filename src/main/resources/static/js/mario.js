@@ -42,7 +42,7 @@ var mario = {
                 $(".selectpicker-modifyEditorBackGround").change(function (e) {
                     // console.log(e.target.value);
                     // console.log(this.selectedIndex);
-                    changeTheme(this.selectedIndex);
+                    mario.changeTheme(this.selectedIndex);
                 });
 
                 //修改语言
@@ -55,9 +55,14 @@ var mario = {
                     });
                 } catch (e) {
                 }
-
             });
         });
+    },
+
+    //切换编辑器背景
+    changeTheme: function (theme) {
+        var newTheme = (theme === 1 ? 'vs-dark' : (theme === 0 ? 'vs' : 'hc-black'));
+        monaco.editor.setTheme(newTheme);
     },
 
     //项目下拉框点击处理
