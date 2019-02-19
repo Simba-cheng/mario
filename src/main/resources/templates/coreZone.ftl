@@ -45,5 +45,5 @@
 
 <#--API接口其他相关信息-->
 <div class="apiInfoShowRegion" id="apiInfoShowRegion">
-
+    <#include "candle.html">
 </div>

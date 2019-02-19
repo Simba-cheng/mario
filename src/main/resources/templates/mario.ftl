@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/static/sweetalert/css/sweetalert.css">
     <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/static/bootstrap/bootstrap-select/css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/candle.css">
 
     <script type="text/javascript" src="/static/jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/static/jquery/jquery.cookie.js"></script>
