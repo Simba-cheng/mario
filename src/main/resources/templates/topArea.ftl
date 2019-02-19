@@ -10,10 +10,10 @@
         <button type="button" id="button_conn_zkServer" class="btn btn-primary" onclick="">添加项目</button>
     </span>
     <span class="nav-content-detail">
-        <button type="button" id="button_refresh_page" class="btn btn-success">功能-2</button>
+        <button type="button" id="button_refresh_page" class="btn btn-success">删除项目</button>
     </span>
     <span class="nav-content-detail">
-        <button type="button" id="button_close_zkServer" class="btn btn-danger">功能-3</button>
+        <button type="button" id="button_close_zkServer" class="btn btn-danger">修改项目</button>
     </span>
 
     <div class="languageContent">
