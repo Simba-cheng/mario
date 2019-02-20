@@ -5,7 +5,7 @@
     </select>
 </div>
 
-<div class="nav-content">
+<div class="nav-content" style="line-height:35px;">
     <span class="nav-content-detail">
         <button type="button" id="button_conn_zkServer" class="btn btn-primary" onclick="">添加项目</button>
     </span>
