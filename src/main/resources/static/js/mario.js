@@ -1,4 +1,5 @@
 var editor = "";
+var amplificationEditor = "";
 
 var mario = {
 
@@ -6,6 +7,7 @@ var mario = {
         this.initMonaceEditor();
         this.projectSelectHandler();
         this.lanagerSelectHandler();
+        this.openEditorPopUps();
     },
 
     initMonaceEditor: function () {
@@ -38,10 +40,21 @@ var mario = {
                     fontSize: '16'
                 });
 
+                //初始化弹窗编辑器
+                mario.amplificationEditor = monaco.editor.create(document.getElementById('amplificationEditor'), {
+                    //支持语言
+                    language: 'json',
+                    //背景样式
+                    theme: 'vs',
+                    //编辑器随浏览器窗口自动调整大小
+                    automaticLayout: true,
+                    //编辑器中文字的大小
+                    fontSize: '16'
+                });
+
+
                 //编辑器背景样式修改
                 $(".selectpicker-modifyEditorBackGround").change(function (e) {
-                    // console.log(e.target.value);
-                    // console.log(this.selectedIndex);
                     mario.changeTheme(this.selectedIndex);
                 });
 
@@ -52,9 +65,16 @@ var mario = {
                         var data = mario.editor.getValue();
                         var newModel = monaco.editor.createModel(data, name);
                         mario.editor.setModel(newModel);
+                        mario.amplificationEditor.setModel(newModel);
                     });
                 } catch (e) {
                 }
+
+                //弹窗编辑器被修改后，将被修改的内容，copy到原本的编辑器中
+                mario.amplificationEditor.onDidChangeModelContent(function () {
+                    console.log(123123123);
+                });
+
             });
         });
     },
@@ -81,6 +101,16 @@ var mario = {
             console.log(e);
             console.log(e.target.value);
         })
+    },
+
+    //放大编辑器 弹窗
+    openEditorPopUps: function () {
+        $("#amplificationEditorButton").click(function () {
+
+            $("#editorModal").modal();
+
+            mario.amplificationEditor.setValue(mario.editor.getValue());
+        });
     }
 };
 

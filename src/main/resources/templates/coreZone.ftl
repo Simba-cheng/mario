@@ -38,6 +38,9 @@
     <div class="updateParamBut">
         <button type="button" class="btn btn-danger btn-sm btn-block" id="updateParam">确定修改</button>
     </div>
+    <div class="amplificationEditorBut">
+        <button type="button" class="btn btn-success btn-sm btn-block" id="amplificationEditorButton">编辑器放大</button>
+    </div>
 
 <#--页面编辑器绑定元素-->
     <div id="paramContainer"></div>

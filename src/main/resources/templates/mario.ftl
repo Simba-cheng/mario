@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/static/sweetalert/css/sweetalert.css">
     <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/static/bootstrap/bootstrap-select/css/bootstrap-select.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/candle.css">
+<#--<link rel="stylesheet" type="text/css" href="/static/css/candle.css">-->
 
     <script type="text/javascript" src="/static/jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/static/jquery/jquery.cookie.js"></script>
@@ -32,6 +32,11 @@
 <#--核心区域-->
 <div class="apiCore" id="apiCoreID">
     <#include "coreZone.ftl">
+</div>
+
+<#--编辑器 放大 弹窗-->
+<div class="modal fade" id="editorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none">
+    <#include "editorPopup.ftl">
 </div>
 
 <#--页脚footer-->
