@@ -40,13 +40,13 @@ public class ApiInterface {
     private String apiNum;
 
     /**
-     * API路径
+     * API路径(包.类.方法名)
      */
     @Column(name = "apiPath", nullable = false)
     private String apiPath;
 
     /**
-     * API
+     * API URL(https://localhost:8888/test.do)
      */
     @Column(name = "apiURL", nullable = false)
     private String apiURL;
