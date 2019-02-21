@@ -36,7 +36,11 @@
 
 <#--页脚footer-->
 <div class="footer">
-    <p class="ng-copyright">Copyright© 2018-2099 ，CYX_Simba版权所有 苏ICP备000001号 </p>
+    <p class="ng-copyright">
+        <span style="margin-left: -250px;">
+            Copyright© 2018-2099 ，CYX_Simba版权所有 苏ICP备000001号
+        </span>
+    </p>
 </div>
 
 <script>
