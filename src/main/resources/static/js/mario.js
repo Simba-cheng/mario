@@ -72,7 +72,7 @@ var mario = {
 
                 //弹窗编辑器被修改后，将被修改的内容，copy到原本的编辑器中
                 mario.amplificationEditor.onDidChangeModelContent(function () {
-                    console.log(123123123);
+                    mario.editor.setValue(mario.amplificationEditor.getValue());
                 });
 
             });
