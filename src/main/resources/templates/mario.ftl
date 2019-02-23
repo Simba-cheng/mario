@@ -39,6 +39,9 @@
     <#include "editorPopup.ftl">
 </div>
 
+<#--动画-->
+<#--<#include "candle.html">-->
+
 <#--页脚footer-->
 <div class="footer">
     <p class="ng-copyright">

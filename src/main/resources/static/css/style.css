@@ -1,5 +1,5 @@
 body {
-    padding: 10px 30px;
+    padding: 10px 10px;
     background: #F2F2F2;
 }
 
@@ -155,7 +155,7 @@ h3 {
 }
 
 .languageContent {
-    width: 10%;
+    /*width: 10%;*/
     display: inline-block;
     float: right;
 }
@@ -165,7 +165,7 @@ h3 {
 }
 
 .modifyEditorBackGround {
-    width: 20%;
+    /*width: 20%;*/
     display: inline-block;
     float: right;
 }

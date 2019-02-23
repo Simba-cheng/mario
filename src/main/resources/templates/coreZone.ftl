@@ -48,5 +48,38 @@
 
 <#--API接口其他相关信息-->
 <div class="apiInfoShowRegion" id="apiInfoShowRegion">
-    <#include "candle.html">
+
+    <div class=table-responsive">
+        <table class="table text-nowrap">
+            <tr>
+                <th>项目/应用名称</th>
+                <td>项目-1</td>
+            </tr>
+            <tr>
+                <th>API编号</th>
+                <td>mario-API-01</td>
+            </tr>
+            <tr>
+                <th>包.类.方法名</th>
+                <td>org.spring.context</td>
+            </tr>
+            <tr>
+                <th>API URL</th>
+                <td>https://localhost:8888/test.do</td>
+            </tr>
+            <tr>
+                <th>API请求方式</th>
+                <td>POST</td>
+            </tr>
+            <tr>
+                <th>开发人员</th>
+                <td>周星星</td>
+            </tr>
+            <tr>
+                <th>产品</th>
+                <td>周润发</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
