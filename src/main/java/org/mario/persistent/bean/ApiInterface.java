@@ -34,6 +34,12 @@ public class ApiInterface {
     private String pId;
 
     /**
+     * 项目/应用名称
+     */
+    @Column(name = "projectName", nullable = false)
+    private String projectName;
+
+    /**
      * API编号
      */
     @Column(name = "apiNum", nullable = false)
