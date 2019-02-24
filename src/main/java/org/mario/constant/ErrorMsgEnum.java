@@ -7,7 +7,10 @@ package org.mario.constant;
 public enum ErrorMsgEnum {
 
     ERR_00("MARIO_API_ERROR_00", "项目名称为空，请检查"),
-    ERR_01("MARIO_API_ERROR_01", "项目名称已存在！");
+    ERR_01("MARIO_API_ERROR_01", "项目名称已存在！"),
+    ERR_02("MARIO_API_ERROR_02", "保存项目名称失败，请稍后再试"),
+    ERR_03("MARIO_API_ERROR_03", "删除项目失败"),
+    ERR_04("MARIO_API_ERROR_04", "删除项目异常");
 
     /**
      * 错误编码

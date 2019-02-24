@@ -7,20 +7,16 @@ import org.mario.constant.CommConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,16 +30,17 @@ import java.util.Set;
  * @author CYX
  * @create 2018-11-14-21:38
  */
-@Service
 public class PubUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PubUtils.class);
 
-    //Java Bean 约束校验
+    /**
+     * Java Bean 约束校验
+     */
     private static ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
 
     @Autowired
-    private FreeMarkerConfig freeMarkerConfig;
+    private static FreeMarkerConfig freeMarkerConfig;
 
     /**
      * 判断是否是Windows系统
@@ -99,30 +96,6 @@ public class PubUtils {
             return StringUtils.EMPTY;
         }
         return stringWriter.toString();
-    }
-
-    /**
-     * 向页面输出结果
-     *
-     * @param response
-     * @param jsonStr
-     */
-    public void flushResultToPage(HttpServletResponse response, String jsonStr) {
-        try {
-            response.setContentType("text/html");
-            response.setHeader("Pragma", "No-cache");
-            response.setHeader("Cache-Control", "no-cache");
-            response.setDateHeader("Expires", 0);
-            response.setCharacterEncoding("UTF-8");
-            response.setContentType("text/html;charset=UTF-8");
-            String json = jsonStr;
-            PrintWriter writer = response.getWriter();
-            writer.print(json);
-            writer.flush();
-            writer.close();
-        } catch (IOException e) {
-            LOGGER.error(e.getMessage(), e);
-        }
     }
 
     /**
