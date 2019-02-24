@@ -27,4 +27,12 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
      */
     Project findProjectByProjectName(String projectName);
 
+    /**
+     * 根据项目名称删除
+     *
+     * @param projectName
+     * @return
+     */
+    Project deleteProjectByProjectName(String projectName);
+
 }

@@ -1,5 +1,7 @@
 package org.mario.service;
 
+import org.mario.vo.response.RespHandlerProjectVo;
+
 /**
  * 项目/应用 service接口
  *
@@ -13,14 +15,14 @@ public interface ProjectService {
      *
      * @param projectName 项目名称
      */
-    void addProject(String projectName);
+    RespHandlerProjectVo addProject(String projectName);
 
     /**
      * 删除 项目/应用
      *
      * @param projectName 项目名称
      */
-    void deleteProject(String projectName);
+    RespHandlerProjectVo deleteProject(String projectName);
 
     /**
      * 更新/修改 项目/应用 名称
