@@ -7,13 +7,13 @@
 
 <div class="nav-content" style="line-height:35px;">
     <span class="nav-content-detail">
-        <button type="button" id="button_conn_zkServer" class="btn btn-primary" onclick="">添加项目</button>
+        <button type="button" id="button_add_project" class="btn btn-primary" onclick="">添加项目</button>
     </span>
     <span class="nav-content-detail">
-        <button type="button" id="button_refresh_page" class="btn btn-success">删除项目</button>
+        <button type="button" id="button_delete_project" class="btn btn-success">删除项目</button>
     </span>
     <span class="nav-content-detail">
-        <button type="button" id="button_close_zkServer" class="btn btn-danger">修改项目</button>
+        <button type="button" id="button_update_project" class="btn btn-danger">修改项目</button>
     </span>
 
     <div class="languageContent">

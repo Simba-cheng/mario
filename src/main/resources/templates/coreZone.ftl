@@ -1,6 +1,10 @@
 <#--API列表展示区域-->
 <div class="apiListShowRegion" id="apiListShowRegion">
 
+    <div class="addNewApiInterface">
+        <button type="button" class="btn btn-success btn-sm btn-block" id="addNewApiInterfaceBut">新增接口</button>
+    </div>
+
 <#--API列表组-->
     <ul class="list-group">
         <a href="#" class="list-group-item active">
