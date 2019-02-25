@@ -7,10 +7,9 @@ var mario = {
         this.initMonaceEditor();
         this.projectSelectHandler();
         this.openEditorPopUps();
-        this.openAddProjectPopUps();
         this.saveProjectName();
-        this.openDeleteProjectPopUps();
-        this.deleteProjectName();
+        this.openHandlerProjectPopUps();
+        this.handlerProjectGP();
     },
 
     initMonaceEditor: function () {
@@ -55,7 +54,6 @@ var mario = {
                     fontSize: '16'
                 });
 
-
                 //编辑器背景样式修改
                 $(".selectpicker-modifyEditorBackGround").change(function (e) {
                     mario.changeTheme(this.selectedIndex);
@@ -81,7 +79,6 @@ var mario = {
                 mario.amplificationEditor.onDidChangeModelContent(function () {
                     mario.editor.setValue(mario.amplificationEditor.getValue());
                 });
-
             });
         });
     },
@@ -109,82 +106,119 @@ var mario = {
         });
     },
 
+    //操作项目弹窗-打开弹窗通用处理
+    handlerProjectPopUpsGP: function (operating, e) {
+
+        if (!isEmpty(operating)) {
+            //赋值
+            if ("01" == operating) {
+                // 添加项目
+                $("#handlerProModalLabel").html("新增项目");
+                $("#btn_handlerProject_submit").attr("typeFlag", "01")
+            } else if ("02" == operating) {
+                // 删除项目
+                $("#handlerProModalLabel").html("删除项目");
+                $("#btn_handlerProject_submit").attr("typeFlag", "02")
+            } else if ("03" == operating) {
+                // 修改项目
+                $("#handlerProModalLabel").html("修改项目");
+                $("#btn_handlerProject_submit").attr("typeFlag", "03")
+            }
+            //打开通用项目操作弹窗
+            mario.openHandlerProjectPopUps();
+        }
+    },
+
     //新增项目弹窗
-    openAddProjectPopUps: function () {
-        $("#button_add_project").click(function () {
-            $("#addProjectModal").modal();
+    openHandlerProjectPopUps: function () {
+        $("#handlerProjectModalFade").modal();
+    },
+
+    //操作项目弹窗-submit通用处理
+    handlerProjectGP: function () {
+        $("#btn_handlerProject_submit").click(function (e) {
+
+            var typeFlag = $("#btn_handlerProject_submit").attr("typeFlag");
+
+            var projectName = $("#txt_handlerProject_departmentname").val();
+
+            if (isEmpty(typeFlag)) {
+
+                if ("01" == typeFlag) {
+                    // 添加项目
+                    mario.saveProjectName(e, projectName);
+                } else if ("02" == typeFlag) {
+                    // 删除项目
+                    mario.deleteProjectName(e, projectName);
+                } else if ("03" == typeFlag) {
+                    // 修改项目
+                    mario.updateProjectName(e, projectName);
+                }
+            }
+
         });
     },
 
     //保存项目名称
-    saveProjectName: function () {
-        $("#btn_addProject_submit").click(function () {
-            var projectName = $("#txt_addPro_departmentname").val();
-            $.ajax({
-                type: "post",
-                dataType: 'json',
-                async: true,
-                url: "/addProject.do",
-                data: {"projectName": projectName},
-                success: function (data) {
-                    var successFlag = data.successFlag;
-                    var resultData = data.resultData;
-                    if (!isEmpty(successFlag) && successFlag === "1" && !isEmpty(resultData)) {
-                        if (resultData.successFlag === "Y") {
-                            sweetAlert("操作成功", resultData.copyWriting, "success")
-                        } else if (resultData.successFlag === "N") {
-                            var errorInfo = resultData.errorInfo;
-                            sweetAlert("异常信息", errorInfo.errorMsg, "error")
-                        }
-                    } else {
-                        // 异常
-                        sweetAlert("异常信息", "保存项目名称失败，请稍后再试", "error")
+    saveProjectName: function (e, projectName) {
+        $.ajax({
+            type: "post",
+            dataType: 'json',
+            async: true,
+            url: "/addProject.do",
+            data: {"projectName": projectName},
+            success: function (data) {
+                var successFlag = data.successFlag;
+                var resultData = data.resultData;
+                if (!isEmpty(successFlag) && successFlag === "1" && !isEmpty(resultData)) {
+                    if (resultData.successFlag === "Y") {
+                        sweetAlert("操作成功", resultData.copyWriting, "success")
+                    } else if (resultData.successFlag === "N") {
+                        var errorInfo = resultData.errorInfo;
+                        sweetAlert("异常信息", errorInfo.errorMsg, "error")
                     }
-                    //清空输入框中的内容
-                    $("#txt_addPro_departmentname").val("");
+                } else {
+                    // 异常
+                    sweetAlert("异常信息", "保存项目名称失败，请稍后再试", "error")
                 }
-            });
-        });
-    },
-
-    //删除项目弹窗
-    openDeleteProjectPopUps: function () {
-        $("#button_delete_project").click(function () {
-            $("#deleteProjectModal").modal();
+                //清空输入框中的内容
+                $("#txt_handlerProject_departmentname").val("");
+            }
         });
     },
 
     //删除项目名称
-    deleteProjectName: function () {
-        $("#btn_deleteProject_submit").click(function () {
-
-            $("#txt_deletePro_departmentname").val();
-
-            $.ajax({
-                type: "post",
-                dataType: 'json',
-                async: true,
-                url: "/deletePorject.do",
-                data: {"projectName": projectName},
-                success: function (data) {
-                    var successFlag = data.successFlag;
-                    var resultData = data.resultData;
-                    if (!isEmpty(successFlag) && successFlag === "1" && !isEmpty(resultData)) {
-                        if (resultData.successFlag === "Y") {
-                            sweetAlert("操作成功", resultData.copyWriting, "success")
-                        } else if (resultData.successFlag === "N") {
-                            var errorInfo = resultData.errorInfo;
-                            sweetAlert("异常信息", errorInfo.errorMsg, "error")
-                        }
-                    } else {
-                        // 异常
-                        sweetAlert("异常信息", "删除项目名称失败，请稍后再试", "error")
+    deleteProjectName: function (e, projectName) {
+        $.ajax({
+            type: "post",
+            dataType: 'json',
+            async: true,
+            url: "/deletePorject.do",
+            data: {"projectName": projectName},
+            success: function (data) {
+                var successFlag = data.successFlag;
+                var resultData = data.resultData;
+                if (!isEmpty(successFlag) && successFlag === "1" && !isEmpty(resultData)) {
+                    if (resultData.successFlag === "Y") {
+                        sweetAlert("操作成功", resultData.copyWriting, "success")
+                    } else if (resultData.successFlag === "N") {
+                        var errorInfo = resultData.errorInfo;
+                        sweetAlert("异常信息", errorInfo.errorMsg, "error")
                     }
-                    //清空输入框中的内容
-                    $("#txt_addPro_departmentname").val("");
+                } else {
+                    // 异常
+                    sweetAlert("异常信息", "删除项目名称失败，请稍后再试", "error")
                 }
-            });
+                //清空输入框中的内容
+                $("#txt_handlerProject_departmentname").val("");
+            }
         });
+    },
+
+    //更新项目名称
+    updateProjectName: function (e, projectName) {
+
+
     }
 };
 

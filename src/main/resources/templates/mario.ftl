@@ -39,9 +39,9 @@
     <#include "editorPopup.ftl">
 </div>
 
-<#--新增项目名称-弹窗-->
-<div class="modal fade" id="addProjectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none">
-    <#include "addProjectPopl.ftl">
+<#--操作项目通用弹窗-->
+<div class="modal fade" id="handlerProjectModalFade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none">
+    <#include "handlerProjectPop.ftl">
 </div>
 
 <#--动画-->

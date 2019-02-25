@@ -176,19 +176,11 @@ h3 {
     float: right;
 }
 
-/*.modal-dialog {*/
-/*width: 80% !important;*/
-/*}*/
-
 #editorPopUps_modal {
     width: 80% !important;
 }
 
-#addProjectModalDialog {
-    width: 40% !important;
-}
-
-#deleteProjectModalDialog {
+#handlerProjectModalDialog {
     width: 40% !important;
 }
 
@@ -201,7 +193,7 @@ textarea {
     color: #bfbfbf !important;
 }
 
-#txt_departmentname {
+#txt_handlerProject_departmentname {
     width: 100%;
     height: 12%;
     resize: none;
