@@ -7,9 +7,10 @@ var mario = {
         this.initMonaceEditor();
         this.projectSelectHandler();
         this.openEditorPopUps();
-        this.saveProjectName();
-        this.openHandlerProjectPopUps();
+        // this.saveProjectName();
+        // this.openHandlerProjectPopUps();
         this.handlerProjectGP();
+        // this.handlerProjectPopUpsGP();
     },
 
     initMonaceEditor: function () {
@@ -107,7 +108,7 @@ var mario = {
     },
 
     //操作项目弹窗-打开弹窗通用处理
-    handlerProjectPopUpsGP: function (operating, e) {
+    handlerProjectPopUpsGP: function (operating) {
 
         if (!isEmpty(operating)) {
             //赋值
