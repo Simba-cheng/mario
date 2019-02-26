@@ -143,7 +143,7 @@ var mario = {
 
             var projectName = $("#txt_handlerProject_departmentname").val();
 
-            if (isEmpty(typeFlag)) {
+            if (!isEmpty(typeFlag)) {
 
                 if ("01" == typeFlag) {
                     // 添加项目
