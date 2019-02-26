@@ -7,13 +7,13 @@
 
 <div class="nav-content" style="line-height:35px;">
     <span class="nav-content-detail">
-        <button type="button" id="button_add_project" class="btn btn-primary" onclick="mario.handlerProjectPopUpsGP('01',e)">添加项目</button>
+        <button type="button" id="button_add_project" class="btn btn-primary" onclick="mario.handlerProjectPopUpsGP('01')">添加项目</button>
     </span>
     <span class="nav-content-detail">
-        <button type="button" id="button_delete_project" class="btn btn-success" onclick="mario.handlerProjectPopUpsGP('02',e)">删除项目</button>
+        <button type="button" id="button_delete_project" class="btn btn-success" onclick="mario.handlerProjectPopUpsGP('02')">删除项目</button>
     </span>
     <span class="nav-content-detail">
-        <button type="button" id="button_update_project" class="btn btn-danger" onclick="mario.handlerProjectPopUpsGP('03',e)">修改项目</button>
+        <button type="button" id="button_update_project" class="btn btn-danger" onclick="mario.handlerProjectPopUpsGP('03')">修改项目</button>
     </span>
 
     <div class="languageContent">
