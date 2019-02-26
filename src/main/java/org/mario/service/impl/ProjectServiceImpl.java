@@ -91,12 +91,7 @@ public class ProjectServiceImpl implements ProjectService {
             deleteProjectVo.setSuccessFlag(CommConstant.STRING_N);
         }
 
-        return null;
-    }
-
-    @Override
-    public void updateProject(String projectName) {
-
+        return deleteProjectVo;
     }
 
 }
