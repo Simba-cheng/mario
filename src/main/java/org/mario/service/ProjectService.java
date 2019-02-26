@@ -23,11 +23,4 @@ public interface ProjectService {
      * @param projectName 项目名称
      */
     RespHandlerProjectVo deleteProject(String projectName);
-
-    /**
-     * 更新/修改 项目/应用 名称
-     *
-     * @param projectName 项目名称
-     */
-    void updateProject(String projectName);
 }
