@@ -17,7 +17,7 @@
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
             </button>
             <button type="button" id="btn_handlerProject_submit" class="btn btn-primary" data-dismiss="modal">
-                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>确定
             </button>
         </div>
     </div>
