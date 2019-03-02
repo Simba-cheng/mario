@@ -1,7 +1,5 @@
 <div class="projectNames">
-    <select id="projectNameID" class="selectpicker multiple" title="项目名称" data-live-search="true">
-        <option>项目-1</option>
-        <option>项目-2</option>
+    <select id="projectNameID" class="selectpicker" title="项目名称" data-live-search="true">
     </select>
 </div>
 
@@ -10,10 +8,7 @@
         <button type="button" id="button_add_project" class="btn btn-primary" onclick="mario.handlerProjectPopUpsGP('01')">添加项目</button>
     </span>
     <span class="nav-content-detail">
-        <button type="button" id="button_delete_project" class="btn btn-success" onclick="mario.handlerProjectPopUpsGP('02')">删除项目</button>
-    </span>
-    <span class="nav-content-detail">
-        <button type="button" id="button_update_project" class="btn btn-danger" onclick="mario.handlerProjectPopUpsGP('03')">修改项目</button>
+        <button type="button" id="button_delete_project" class="btn btn-danger" onclick="mario.handlerProjectPopUpsGP('02')">删除项目</button>
     </span>
 
     <div class="languageContent">
@@ -21,6 +16,7 @@
         <select id="languageSelectID" class="selectpicker-languageContent" title="json" data-live-search="true">
             <option>json</option>
             <option>xml</option>
+            <option>ini</option>
         </select>
     </div>
 
