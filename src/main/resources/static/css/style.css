@@ -134,10 +134,10 @@ h3 {
     text-align: center;
 }
 
-.addNewApiInterface{
-    width: 60%;
+.addNewApiInterface {
+    width: 100%;
     display: inline-block;
-    padding: 5px 5px;
+    padding: 0px 5px;
 }
 
 .inPutParamInfoBut {
@@ -198,4 +198,8 @@ textarea {
     height: 12%;
     resize: none;
     font-size: 16px;
+}
+
+#api_list_group {
+    padding: 10px 6px !important;
 }
