@@ -44,6 +44,10 @@
     <#include "handlerProjectPop.ftl">
 </div>
 
+<div class="modal fade" id="addApiInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <#include "apiInfoPop.ftl">
+</div>
+
 <#--动画-->
 <#--<#include "candle.html">-->
 
@@ -64,15 +68,17 @@
             return e;
         },
         actions: [{
-            name: '新增API接口',
+            name: '修改API接口',
             onClick: function (e) {
+                mario.updateApi(e);
             }
         }, {
             name: '删除API接口',
             onClick: function (e) {
+                mario.deleteApi(e);
             }
         }, {
-            name: 'test3',
+            name: '这个加什么功能呢...',
             onClick: function (e) {
             }
         }]
