@@ -4,8 +4,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.mario.constant.NumberEnum;
 import org.mario.service.ApiManageService;
-import org.mario.service.BasicService;
-import org.mario.vo.response.*;
+import org.mario.vo.response.RespAddApiInterfaceVO;
+import org.mario.vo.response.RespDeleteApiVO;
+import org.mario.vo.response.RespQueryApiByProtNameVO;
+import org.mario.vo.response.RespQueryInfoByApiNameVO;
+import org.mario.vo.response.RespSaveParamDataVO;
+import org.mario.vo.response.ResultVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +28,15 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 @RequestMapping(value = "/")
-public class ApiRelatedController {
+public class ApiRelatedController extends BasicController{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ApiRelatedController.class);
 
     @Autowired
     private ApiManageService apiManageService;
 
-    @Autowired
-    private BasicService basicService;
+    //@Autowired
+    //private BasicService basicService;
 
     public static Gson gson = (new GsonBuilder()).enableComplexMapKeySerialization().create();
 
@@ -55,10 +59,10 @@ public class ApiRelatedController {
         resultVO.setResultData(addApiInterfaceVO);
 
         String resultJson = gson.toJson(resultVO);
-        LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
+        //LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        basicService.flushResultToPage(response, resultJson);
-
+        //basicService.flushResultToPage(response, resultJson);
+        super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
     /**
@@ -83,7 +87,8 @@ public class ApiRelatedController {
         String resultJson = gson.toJson(resultVO);
         LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        basicService.flushResultToPage(response, resultJson);
+        //basicService.flushResultToPage(response, resultJson);
+        super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
     /**
@@ -108,7 +113,8 @@ public class ApiRelatedController {
         String resultJson = gson.toJson(resultVO);
         LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        basicService.flushResultToPage(response, resultJson);
+        //basicService.flushResultToPage(response, resultJson);
+        super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
     /**
@@ -132,7 +138,8 @@ public class ApiRelatedController {
         String resultJson = gson.toJson(resultVO);
         LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        basicService.flushResultToPage(response, resultJson);
+        //basicService.flushResultToPage(response, resultJson);
+        super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
     /**
@@ -157,7 +164,8 @@ public class ApiRelatedController {
         String resultJson = gson.toJson(resultVO);
         LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        basicService.flushResultToPage(response, resultJson);
+        //basicService.flushResultToPage(response, resultJson);
+        super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
     /**

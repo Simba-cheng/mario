@@ -3,7 +3,6 @@ package org.mario.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.mario.constant.NumberEnum;
-import org.mario.service.BasicService;
 import org.mario.service.ProjectService;
 import org.mario.vo.response.RespHandlerProjectVo;
 import org.mario.vo.response.ResultVO;
@@ -27,15 +26,15 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 @RequestMapping(value = "/")
-public class ProjectRelatedController {
+public class ProjectRelatedController extends BasicController{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProjectRelatedController.class);
 
     @Autowired
     private ProjectService projectService;
 
-    @Autowired
-    private BasicService basicService;
+    //@Autowired
+    //private BasicService basicService;
 
     public static Gson gson = (new GsonBuilder()).enableComplexMapKeySerialization().create();
 
@@ -60,7 +59,8 @@ public class ProjectRelatedController {
         String resultJson = gson.toJson(resultVO);
         LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        basicService.flushResultToPage(response, resultJson);
+        //basicService.flushResultToPage(response, resultJson);
+        super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
     /**
@@ -83,7 +83,8 @@ public class ProjectRelatedController {
         String resultJson = gson.toJson(resultVO);
         LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        basicService.flushResultToPage(response, resultJson);
+        //basicService.flushResultToPage(response, resultJson);
+        super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
     /**
@@ -108,7 +109,8 @@ public class ProjectRelatedController {
         String resultJson = gson.toJson(resultVO);
         LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        basicService.flushResultToPage(response, resultJson);
+        //basicService.flushResultToPage(response, resultJson);
+        super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
 }
