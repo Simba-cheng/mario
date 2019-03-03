@@ -5,9 +5,7 @@ import com.google.gson.GsonBuilder;
 import org.mario.constant.NumberEnum;
 import org.mario.service.ApiManageService;
 import org.mario.service.BasicService;
-import org.mario.service.ProjectService;
-import org.mario.vo.response.RespHandlerProjectVo;
-import org.mario.vo.response.ResultVO;
+import org.mario.vo.response.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,59 +32,149 @@ public class ApiRelatedController {
     private ApiManageService apiManageService;
 
     @Autowired
-    private ProjectService projectService;
-
-    @Autowired
     private BasicService basicService;
 
     public static Gson gson = (new GsonBuilder()).enableComplexMapKeySerialization().create();
 
     /**
-     * @param projectName 项目名称
+     * 新增接口
+     *
+     * @param data
      * @param request
      * @param response
      */
-    @PostMapping(value = "addProject.do")
-    public void addProject(String projectName, HttpServletRequest request, HttpServletResponse response) {
-
-        String methodName = "ApiRelatedController#addProject";
-        LOGGER.info("methodName : {} , projectName : {}", new Object[]{methodName, projectName});
+    @PostMapping(value = "addApi.do")
+    public void addApiInterface(String data, HttpServletRequest request, HttpServletResponse response) {
+        String methodName = "ApiRelatedController#addApiInterface";
+        LOGGER.info("methodName:{} , data:{}", new Object[]{methodName, data});
 
         ResultVO resultVO = new ResultVO();
         resultVO.setSuccessFlag(NumberEnum.ONE_STR.getNumStr());
 
-        RespHandlerProjectVo handlerProjectVo = projectService.addProject(projectName);
-        resultVO.setResultData(handlerProjectVo);
+        RespAddApiInterfaceVO addApiInterfaceVO = apiManageService.addNewApi(data);
+        resultVO.setResultData(addApiInterfaceVO);
 
         String resultJson = gson.toJson(resultVO);
-        LOGGER.info("result info : {}", new Object[]{resultJson});
+        LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
         basicService.flushResultToPage(response, resultJson);
+
     }
 
     /**
-     * 删除项目
+     * 根据projectName，查询所有API
      *
      * @param projectName 项目名称
      * @param request
      * @param response
      */
-    @PostMapping(value = "deletePorject.do")
-    public void deleteProject(String projectName, HttpServletRequest request, HttpServletResponse response) {
+    @PostMapping(value = "queryAllApiList.do")
+    public void queryAllApiInterByProName(String projectName, HttpServletRequest request, HttpServletResponse response) {
 
-        String methodName = "ApiRelatedController#deleteProject";
-        LOGGER.info("methodName : {} , projectName : {}", new Object[]{methodName, projectName});
+        String methodName = "ApiRelatedController#queryAllApiInterByProName";
+        LOGGER.info("methodName:{} , projectName:{}", new Object[]{methodName, projectName});
 
         ResultVO resultVO = new ResultVO();
         resultVO.setSuccessFlag(NumberEnum.ONE_STR.getNumStr());
 
-        RespHandlerProjectVo handlerProjectVo = projectService.deleteProject(projectName);
-        resultVO.setResultData(handlerProjectVo);
+        RespQueryApiByProtNameVO queryApiByProtNameVO = apiManageService.queryApiByProjectName(projectName);
+        resultVO.setResultData(queryApiByProtNameVO);
 
         String resultJson = gson.toJson(resultVO);
-        LOGGER.info("result info : {}", new Object[]{resultJson});
+        LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
         basicService.flushResultToPage(response, resultJson);
     }
 
+    /**
+     * 根据API名称 查询 API内容
+     *
+     * @param apiName  API名称
+     * @param request
+     * @param response
+     */
+    @PostMapping(value = "queryApiInfoByApiName.do")
+    public void queryApiInfoByApiName(String apiName, HttpServletRequest request, HttpServletResponse response) {
+
+        String methodName = "ApiRelatedController#queryApiInfoByApiName";
+        LOGGER.info("methodName:{} , apiName:{}", new Object[]{methodName, apiName});
+
+        ResultVO resultVO = new ResultVO();
+        resultVO.setSuccessFlag(NumberEnum.ONE_STR.getNumStr());
+
+        RespQueryInfoByApiNameVO infoByApiNameVO = apiManageService.queryApiInfoByApiName(apiName);
+        resultVO.setResultData(infoByApiNameVO);
+
+        String resultJson = gson.toJson(resultVO);
+        LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
+
+        basicService.flushResultToPage(response, resultJson);
+    }
+
+    /**
+     * 保存/更新 参数结构数据
+     *
+     * @param request
+     * @param response
+     */
+    @PostMapping(value = "saveParamData.do")
+    public void saveParamData(String data, HttpServletRequest request, HttpServletResponse response) {
+
+        String methodName = "ApiRelatedController#saveParamData";
+        LOGGER.info("methodName:{} , data:{}", new Object[]{methodName, data});
+
+        ResultVO resultVO = new ResultVO();
+        resultVO.setSuccessFlag(NumberEnum.ONE_STR.getNumStr());
+
+        RespSaveParamDataVO saveParamDataVO = apiManageService.updateParamDataWithApiName(data);
+        resultVO.setResultData(saveParamDataVO);
+
+        String resultJson = gson.toJson(resultVO);
+        LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
+
+        basicService.flushResultToPage(response, resultJson);
+    }
+
+    /**
+     * 删除接口信息
+     *
+     * @param apiName
+     * @param request
+     * @param response
+     */
+    @PostMapping(value = "deleteApi.do")
+    public void deleteApiInterface(String apiName, HttpServletRequest request, HttpServletResponse response) {
+
+        String methodName = "ApiRelatedController#deleteApiInterface";
+        LOGGER.info("methodName:{} , apiName:{}", new Object[]{methodName, apiName});
+
+        ResultVO resultVO = new ResultVO();
+        resultVO.setSuccessFlag(NumberEnum.ONE_STR.getNumStr());
+
+        RespDeleteApiVO respDeleteApiVO = apiManageService.deleteApiInterface(apiName);
+        resultVO.setResultData(respDeleteApiVO);
+
+        String resultJson = gson.toJson(resultVO);
+        LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
+
+        basicService.flushResultToPage(response, resultJson);
+    }
+
+    /**
+     * 更新接口信息
+     *
+     * @param data
+     * @param request
+     * @param response
+     */
+    @PostMapping(value = "updateApi.do")
+    public void updateApiInterface(String data, HttpServletRequest request, HttpServletResponse response) {
+
+        String methodName = "ApiRelatedController#updateApiInterface";
+        LOGGER.info("methodName:{} , data:{}", new Object[]{methodName, data});
+
+        ResultVO resultVO = new ResultVO();
+        resultVO.setSuccessFlag(NumberEnum.ONE_STR.getNumStr());
+
+    }
 }

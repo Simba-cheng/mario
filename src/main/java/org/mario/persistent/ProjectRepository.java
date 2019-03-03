@@ -33,6 +33,6 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
      * @param projectName
      * @return
      */
-    Project deleteProjectByProjectName(String projectName);
+    Integer deleteProjectByProjectName(String projectName);
 
 }

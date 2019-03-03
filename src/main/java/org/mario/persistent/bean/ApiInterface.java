@@ -28,12 +28,6 @@ public class ApiInterface {
     private Integer apiId;
 
     /**
-     * 项目应用名称
-     */
-    @Column(name = "pId", nullable = false)
-    private String pId;
-
-    /**
      * 项目/应用名称
      */
     @Column(name = "projectName", nullable = false)
@@ -44,6 +38,12 @@ public class ApiInterface {
      */
     @Column(name = "apiNum", nullable = false)
     private String apiNum;
+
+    /**
+     * API接口名称
+     */
+    @Column(name = "apiName", nullable = false)
+    private String apiName;
 
     /**
      * API路径(包.类.方法名)
@@ -64,6 +64,12 @@ public class ApiInterface {
     private String requestMethod;
 
     /**
+     * 使用终端
+     */
+    @Column(name = "terminal", nullable = false)
+    private String terminal;
+
+    /**
      * 开发人员
      */
     @Column(name = "coder", nullable = false)
@@ -72,27 +78,28 @@ public class ApiInterface {
     /**
      * 产品
      */
-    @Column(name = "product", nullable = false)
+    @Column(name = "product")
     private String product;
 
     /**
      * 请求入参结构
      */
-    @Column(name = "requestParam", nullable = false, length = 500)
+    @Column(name = "requestParam", nullable = false, length = 90000)
     private String requestParam;
 
     /**
      * 请求出参结构
      */
-    @Column(name = "responseParam", nullable = false, length = 500)
+    @Column(name = "responseParam", nullable = false, length = 90000)
     private String responseParam;
 
-    public ApiInterface(String pId, String apiNum, String apiPath, String apiURL, String requestMethod, String coder, String product, String requestParam, String responseParam) {
-        this.pId = pId;
+    public ApiInterface(String projectName, String apiNum, String apiPath, String apiURL, String requestMethod, String terminal, String coder, String product, String requestParam, String responseParam) {
+        this.projectName = projectName;
         this.apiNum = apiNum;
         this.apiPath = apiPath;
         this.apiURL = apiURL;
         this.requestMethod = requestMethod;
+        this.terminal = terminal;
         this.coder = coder;
         this.product = product;
         this.requestParam = requestParam;

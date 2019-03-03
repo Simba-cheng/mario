@@ -1,6 +1,7 @@
 package org.mario.service;
 
 import org.mario.vo.response.RespHandlerProjectVo;
+import org.mario.vo.response.SearchAllProjectVO;
 
 /**
  * 项目/应用 service接口
@@ -9,6 +10,11 @@ import org.mario.vo.response.RespHandlerProjectVo;
  * @create 2019-02-20-22:36
  */
 public interface ProjectService {
+
+    /**
+     * 查询所有项目
+     */
+    SearchAllProjectVO searchAllProject();
 
     /**
      * 新增 项目/应用
