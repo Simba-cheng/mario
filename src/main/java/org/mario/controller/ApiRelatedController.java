@@ -35,9 +35,6 @@ public class ApiRelatedController extends BasicController{
     @Autowired
     private ApiManageService apiManageService;
 
-    //@Autowired
-    //private BasicService basicService;
-
     public static Gson gson = (new GsonBuilder()).enableComplexMapKeySerialization().create();
 
     /**
@@ -59,9 +56,7 @@ public class ApiRelatedController extends BasicController{
         resultVO.setResultData(addApiInterfaceVO);
 
         String resultJson = gson.toJson(resultVO);
-        //LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        //basicService.flushResultToPage(response, resultJson);
         super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
@@ -85,9 +80,7 @@ public class ApiRelatedController extends BasicController{
         resultVO.setResultData(queryApiByProtNameVO);
 
         String resultJson = gson.toJson(resultVO);
-        LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        //basicService.flushResultToPage(response, resultJson);
         super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
@@ -111,9 +104,7 @@ public class ApiRelatedController extends BasicController{
         resultVO.setResultData(infoByApiNameVO);
 
         String resultJson = gson.toJson(resultVO);
-        LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        //basicService.flushResultToPage(response, resultJson);
         super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
@@ -136,9 +127,7 @@ public class ApiRelatedController extends BasicController{
         resultVO.setResultData(saveParamDataVO);
 
         String resultJson = gson.toJson(resultVO);
-        LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        //basicService.flushResultToPage(response, resultJson);
         super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
@@ -162,9 +151,7 @@ public class ApiRelatedController extends BasicController{
         resultVO.setResultData(respDeleteApiVO);
 
         String resultJson = gson.toJson(resultVO);
-        LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        //basicService.flushResultToPage(response, resultJson);
         super.returnAjaxRequestData(methodName,resultJson,response);
     }
 

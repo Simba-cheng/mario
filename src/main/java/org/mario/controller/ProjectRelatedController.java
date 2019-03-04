@@ -33,9 +33,6 @@ public class ProjectRelatedController extends BasicController{
     @Autowired
     private ProjectService projectService;
 
-    //@Autowired
-    //private BasicService basicService;
-
     public static Gson gson = (new GsonBuilder()).enableComplexMapKeySerialization().create();
 
     /**
@@ -57,9 +54,7 @@ public class ProjectRelatedController extends BasicController{
         resultVO.setResultData(allProjectVO);
 
         String resultJson = gson.toJson(resultVO);
-        LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        //basicService.flushResultToPage(response, resultJson);
         super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
@@ -81,9 +76,7 @@ public class ProjectRelatedController extends BasicController{
         resultVO.setResultData(handlerProjectVo);
 
         String resultJson = gson.toJson(resultVO);
-        LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        //basicService.flushResultToPage(response, resultJson);
         super.returnAjaxRequestData(methodName,resultJson,response);
     }
 
@@ -107,9 +100,7 @@ public class ProjectRelatedController extends BasicController{
         resultVO.setResultData(handlerProjectVo);
 
         String resultJson = gson.toJson(resultVO);
-        LOGGER.info("methodName :{},result info : {}", new Object[]{methodName, resultJson});
 
-        //basicService.flushResultToPage(response, resultJson);
         super.returnAjaxRequestData(methodName,resultJson,response);
     }
 

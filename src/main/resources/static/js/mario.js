@@ -469,7 +469,7 @@ var mario = {
         var apiName = e[0].text;
     },
 
-//删除API
+    //删除API
     deleteApi: function (e) {
 
         //被点击的API节点

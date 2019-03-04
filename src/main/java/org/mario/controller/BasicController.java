@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 基础controller
+ * <p>
+ * 提炼普通controller层公共方法
+ *
  * @author CYX
  * @create 2019-03-03-21:51
  */
