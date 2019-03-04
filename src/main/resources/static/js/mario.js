@@ -469,35 +469,48 @@ var mario = {
         var apiName = e[0].text;
     },
 
-    //删除API
+//删除API
     deleteApi: function (e) {
+
         //被点击的API节点
         var apiName = e[0].text;
-        $.ajax({
-            type: "post",
-            dataType: 'json',
-            async: false,
-            data: {"apiName": apiName},
-            url: "/deleteApi.do",
-            success: function (data) {
-                var successFlag = data.successFlag;
-                var resultData = data.resultData;
-                if (!isEmpty(successFlag) && successFlag === "1" && !isEmpty(resultData)) {
-                    if (resultData.successFlag === "Y") {
-                        sweetAlert("操作成功", resultData.copyWriting, "success")
-                        //从页面列表中删除
-                        e[0].remove();
-                        //清空数据
-                        clearAllInfo();
-                    } else if (resultData.successFlag === "N") {
-                        var errrorInfo = resultData.errorInfo;
-                        sweetAlert("异常信息", errrorInfo.errorMsg, "error")
+
+        swal({
+                title: "确定删除吗？",
+                text: "你将无法恢复！",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "确定删除！",
+                closeOnConfirm: false
+            },
+            function () {
+                $.ajax({
+                    type: "post",
+                    dataType: 'json',
+                    async: false,
+                    data: {"apiName": apiName},
+                    url: "/deleteApi.do",
+                    success: function (data) {
+                        var successFlag = data.successFlag;
+                        var resultData = data.resultData;
+                        if (!isEmpty(successFlag) && successFlag === "1" && !isEmpty(resultData)) {
+                            if (resultData.successFlag === "Y") {
+                                sweetAlert("操作成功", resultData.copyWriting, "success")
+                                //从页面列表中删除
+                                e[0].remove();
+                                //清空数据
+                                clearAllInfo();
+                            } else if (resultData.successFlag === "N") {
+                                var errrorInfo = resultData.errorInfo;
+                                sweetAlert("异常信息", errrorInfo.errorMsg, "error")
+                            }
+                        } else {
+                            sweetAlert("异常信息", "删除API接口异常", "error")
+                        }
                     }
-                } else {
-                    sweetAlert("异常信息", "删除API接口异常", "error")
-                }
-            }
-        });
+                });
+            });
     }
 };
 
