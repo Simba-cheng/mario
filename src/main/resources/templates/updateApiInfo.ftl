@@ -72,7 +72,7 @@
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
             </button>
             <button type="button" id="btn_update_api_info_submit" class="btn btn-primary" data-dismiss="modal">
-                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>确定
+                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>确定更新
             </button>
         </div>
     </div>
