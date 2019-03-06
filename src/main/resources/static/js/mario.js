@@ -461,14 +461,48 @@ var mario = {
     },
 
     //API更新
-    updateApi: function (e) {
-
-        // TODO 将右侧API信息反填到表单中
+    openUpdateApiModel: function (e) {
 
         //被点击的API节点
         var apiName = e[0].text;
-    },
 
+        $.ajax({
+            type: "post",
+            dataType: 'json',
+            async: false,
+            data: {"apiName": apiName},
+            url: "/queryApiInfoByApiName.do",
+            success: function (data) {
+                var successFlag = data.successFlag;
+                var resultData = data.resultData;
+                if (!isEmpty(successFlag) && successFlag === "1" && !isEmpty(resultData)) {
+                    if (resultData.successFlag === "Y") {
+                        var apiInfo = resultData.apiInfo;
+
+                        //1.根据api name查询，将结果反填到表单中
+                        $("#update_api_id").val(apiInfo.apiId);
+                        $("#update_APINumber_id").val(apiInfo.apiNum);
+                        $("#update_APIInterName_id").val(apiInfo.apiName);
+                        $("#update_package_class_method_id").val(apiInfo.apiPath);
+                        $("#update_api_url_id").val(apiInfo.apiURL);
+                        $("#update_api_method_id").val(apiInfo.requestMethod);
+                        $("#update_terminal_id").val(apiInfo.terminal);
+                        $("#update_coderName_id").val(apiInfo.coder);
+                        $("#update_product_id").val(apiInfo.product);
+
+                        //2.展示更新弹窗表单
+                        $("#updateApiInfoModal").modal();
+
+                    } else if (resultData.successFlag === "N") {
+                        var errrorInfo = resultData.errorInfo;
+                        sweetAlert("异常信息", errrorInfo.errorMsg, "error")
+                    }
+                } else {
+                    sweetAlert("异常信息", "查询API接口信息异常", "error")
+                }
+            }
+        });
+    },
     //删除API
     deleteApi: function (e) {
 

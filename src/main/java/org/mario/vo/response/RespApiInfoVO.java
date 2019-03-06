@@ -9,6 +9,10 @@ import lombok.Data;
 @Data
 public class RespApiInfoVO {
 
+    /**
+     * api接口内部编号，根据数据库id自增长
+     */
+    private Integer apiId;
 
     /**
      * 项目/应用名称

@@ -44,8 +44,14 @@
     <#include "handlerProjectPop.ftl">
 </div>
 
+<#--新增API弹窗-->
 <div class="modal fade" id="addApiInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <#include "apiInfoPop.ftl">
+</div>
+
+<#--更新API弹窗-->
+<div class="modal fade" id="updateApiInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <#include "updateApiInfo.ftl">
 </div>
 
 <#--动画-->
@@ -70,7 +76,7 @@
         actions: [{
             name: '修改API接口',
             onClick: function (e) {
-                mario.updateApi(e);
+                mario.openUpdateApiModel(e);
             }
         }, {
             name: '删除API接口',

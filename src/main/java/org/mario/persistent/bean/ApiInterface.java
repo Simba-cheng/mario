@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class ApiInterface {
 
     /**
-     * pId-项目/应用编号
+     * api接口内部编号，根据数据库id自增长
      */
     @Id
     @GeneratedValue
