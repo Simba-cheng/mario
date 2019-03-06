@@ -465,6 +465,11 @@ var mario = {
 
         //被点击的API节点
         var apiName = e[0].text;
+        //为空，直接展示空表单
+        if (isEmpty(apiName)) {
+            $("#updateApiInfoModal").modal();
+            return;
+        }
 
         $.ajax({
             type: "post",
@@ -492,13 +497,14 @@ var mario = {
 
                         //2.展示更新弹窗表单
                         $("#updateApiInfoModal").modal();
-
                     } else if (resultData.successFlag === "N") {
                         var errrorInfo = resultData.errorInfo;
-                        sweetAlert("异常信息", errrorInfo.errorMsg, "error")
+                        sweetAlert("异常信息", errrorInfo.errorMsg, "error");
                     }
                 } else {
                     sweetAlert("异常信息", "查询API接口信息异常", "error")
+                    //清空表单
+                    clearUpdateAPIInfoModel();
                 }
             }
         });
@@ -514,6 +520,7 @@ var mario = {
                 text: "你将无法恢复！",
                 type: "warning",
                 showCancelButton: true,
+                cancelButtonText: "取消删除！",
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "确定删除！",
                 closeOnConfirm: false
@@ -572,6 +579,19 @@ function appendApiInfomation() {
     data.requestParam = "";
     data.responseParam = "";
     return data;
+}
+
+//清空 更新API信息弹窗表单
+function clearUpdateAPIInfoModel() {
+    $("#update_api_id").val("");
+    $("#update_APINumber_id").val("");
+    $("#update_APIInterName_id").val("");
+    $("#update_package_class_method_id").val("");
+    $("#update_api_url_id").val("");
+    $("#update_api_method_id").val("");
+    $("#update_terminal_id").val("");
+    $("#update_coderName_id").val("");
+    $("#update_product_id").val("");
 }
 
 //清空API信息弹窗表单

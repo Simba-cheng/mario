@@ -5,7 +5,7 @@
                 ×
             </button>
             <h4 class="modal-title" id="myModalLabel">
-                API接口信息
+                更新API接口信息
             </h4>
         </div>
         <div class="modal-body">
