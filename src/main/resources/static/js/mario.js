@@ -509,6 +509,47 @@ var mario = {
             }
         });
     },
+    
+    
+    //更新API信息
+    updateAPIInfo: function () {
+        $("#btn_update_api_info_submit").click(function () {
+            // var apiInfoData = getUpdateApiInfoByModel();
+            var apiInfoData = {};
+            apiInfoData.apiId = $("#update_api_id").val();
+            apiInfoData.apiNum = $("#update_APINumber_id").val();
+            apiInfoData.apiName = $("#update_APIInterName_id").val();
+            apiInfoData.apiPath = $("#update_package_class_method_id").val();
+            apiInfoData.apiURL = $("#update_api_url_id").val();
+            apiInfoData.requestMethod = $("#update_api_method_id").val();
+            apiInfoData.terminal = $("#update_terminal_id").val();
+            apiInfoData.coder = $("#update_coderName_id").val();
+            apiInfoData.product = $("#update_product_id").val();
+
+            $.ajax({
+                type: "post",
+                dataType: 'json',
+                async: false,
+                data: {"data": JSON.stringify(apiInfoData)},
+                url: "/deleteApi.do",
+                success: function (data) {
+                    var successFlag = data.successFlag;
+                    var resultData = data.resultData;
+                    if (!isEmpty(successFlag) && successFlag === "1" && !isEmpty(resultData)) {
+                        if (resultData.successFlag === "Y") {
+                        } else if (resultData.successFlag === "N") {
+                            var errrorInfo = resultData.errorInfo;
+                            sweetAlert("异常信息", errrorInfo.errorMsg, "error")
+                        }
+                    } else {
+                        sweetAlert("异常信息", "更新API信息异常", "error")
+                    }
+                }
+            });
+        });
+    },
+
+    
     //删除API
     deleteApi: function (e) {
 
