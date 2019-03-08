@@ -20,7 +20,9 @@ public enum ErrorMsgEnum {
     ERR_11("MARIO_API_ERROR_11", "API名称为空，请检查！"),
     ERR_12("MARIO_API_ERROR_12", "保存参数结构数据异常！"),
     ERR_13("MARIO_API_ERROR_13", "删除API接口异常！"),
-    ERR_14("MARIO_API_ERROR_13", "删除API接口失败！");
+    ERR_14("MARIO_API_ERROR_14", "删除API接口失败！"),
+    ERR_15("MARIO_API_ERROR_15", "更新接口信息，参数为空，请检查！"),
+    ERR_16("MARIO_API_ERROR_16", "该接口似乎不存在，请刷新页面检查！");
 
     /**
      * 错误编码

@@ -4,6 +4,7 @@ import org.mario.persistent.bean.ApiInterface;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  * @author CYX
  * @create 2019-02-20-22:19
  */
+@Repository
 public interface ApiIntegerRepository extends JpaRepository<ApiInterface, Integer> {
 
     /**
@@ -33,6 +35,8 @@ public interface ApiIntegerRepository extends JpaRepository<ApiInterface, Intege
     ApiInterface findByApiName(String apiName);
 
     /**
+     * API 入参更新
+     * <p>
      * 使用原生SQL更新
      *
      * @param apiName   api名称
@@ -41,12 +45,21 @@ public interface ApiIntegerRepository extends JpaRepository<ApiInterface, Intege
      */
     @Query(value = "update api_interface set request_param = ?2 where api_name = ?1", nativeQuery = true)
     @Modifying
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     Integer updateInputParamDataWithApiName(String apiName, String paramData);
 
+    /**
+     * API 出参更新
+     * <p>
+     * 使用原生SQL更新
+     *
+     * @param apiName
+     * @param paramData
+     * @return
+     */
     @Query(value = "update api_interface set response_param = ?2 where api_name = ?1", nativeQuery = true)
     @Modifying
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     Integer updateOutParamDataWithApiName(String apiName, String paramData);
 
     /**
@@ -55,7 +68,14 @@ public interface ApiIntegerRepository extends JpaRepository<ApiInterface, Intege
      * @param apiName api名称
      * @return
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     Integer deleteApiInterfaceByApiName(String apiName);
+
+    /**
+     *
+     * @param apiId
+     * @return
+     */
+    ApiInterface findApiInterfaceByApiId(Integer apiId);
 
 }

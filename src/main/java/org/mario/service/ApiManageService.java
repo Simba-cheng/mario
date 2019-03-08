@@ -41,8 +41,10 @@ public interface ApiManageService {
 
     /**
      * 更新API接口
+     *
+     * @param data
      */
-    void updateApiInterface();
+    RespUpdateApiInfoVO updateApiInterface(String data);
 
     /**
      * 删除API接口

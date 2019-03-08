@@ -13,7 +13,14 @@ import org.mario.util.PubUtils;
 import org.mario.vo.error.ErrorInfo;
 import org.mario.vo.request.ReqApiInterInfoVO;
 import org.mario.vo.request.ReqSaveParamDataVO;
-import org.mario.vo.response.*;
+import org.mario.vo.request.ReqUpdataApiInfoVO;
+import org.mario.vo.response.RespAddApiInterfaceVO;
+import org.mario.vo.response.RespApiInfoVO;
+import org.mario.vo.response.RespDeleteApiVO;
+import org.mario.vo.response.RespQueryApiByProtNameVO;
+import org.mario.vo.response.RespQueryInfoByApiNameVO;
+import org.mario.vo.response.RespSaveParamDataVO;
+import org.mario.vo.response.RespUpdateApiInfoVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -27,7 +34,7 @@ import java.util.List;
  * @author CYX
  * @create 2019-02-20-22:40
  */
-@Service
+@Service(value = "ApiManageServiceImpl")
 public class ApiManageServiceImpl implements ApiManageService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ApiManageServiceImpl.class);
@@ -246,8 +253,54 @@ public class ApiManageServiceImpl implements ApiManageService {
     }
 
     @Override
-    public void updateApiInterface() {
+    public RespUpdateApiInfoVO updateApiInterface(String data) {
 
+        RespUpdateApiInfoVO updateApiInfoVO = new RespUpdateApiInfoVO();
+
+        //check
+        if (StringUtils.isEmpty(data)) {
+            updateApiInfoVO.setErrorInfo(new ErrorInfo(ErrorMsgEnum.ERR_15.getErrorCode(), ErrorMsgEnum.ERR_15.getErrorMsg()));
+            updateApiInfoVO.setSuccessFlag(CommConstant.STRING_N);
+            return updateApiInfoVO;
+        }
+
+        ReqUpdataApiInfoVO reqUpdataApiInfoVO = JsonUtils.toJavaObject(data, ReqUpdataApiInfoVO.class);
+        List<String> errorInfos = PubUtils.validateObjectField(reqUpdataApiInfoVO);
+        if (CollectionUtils.isNotEmpty(errorInfos)) {
+            updateApiInfoVO.setErrorInfo(new ErrorInfo(ErrorMsgEnum.ERR_15.getErrorCode(), errorInfos.get(0)));
+            updateApiInfoVO.setSuccessFlag(CommConstant.STRING_N);
+            return updateApiInfoVO;
+        }
+
+        ApiInterface apiInfoReq = new ApiInterface();
+        BeanUtils.copyProperties(reqUpdataApiInfoVO, apiInfoReq);
+
+        try {
+
+            LOGGER.info("apiInfoReq : " + apiInfoReq.toString());
+
+            //查询入参和出参结构，然后反填
+            ApiInterface tempApiInterface = apiIntegerRepository.findApiInterfaceByApiId(apiInfoReq.getApiId());
+            LOGGER.info("tempApiInterface : " + tempApiInterface.toString());
+            if (null != tempApiInterface) {
+                apiInfoReq.setRequestParam(tempApiInterface.getRequestParam());
+                apiInfoReq.setResponseParam(tempApiInterface.getResponseParam());
+
+                ApiInterface updateApiInfoResult = apiIntegerRepository.save(apiInfoReq);
+                LOGGER.info("updateApiInfoResult : " + updateApiInfoResult.toString());
+
+            } else {
+                updateApiInfoVO.setErrorInfo(new ErrorInfo(ErrorMsgEnum.ERR_16.getErrorCode(), ErrorMsgEnum.ERR_16.getErrorMsg()));
+                updateApiInfoVO.setSuccessFlag(CommConstant.STRING_N);
+                LOGGER.info("updateApiInfoVO : " + updateApiInfoVO.toString());
+            }
+
+
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
+        }
+
+        return updateApiInfoVO;
     }
 
 }

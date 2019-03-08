@@ -28,6 +28,7 @@ var mario = {
         this.saveApiInterfaceInfo();
         this.monitorApiList();
         this.saveParam();
+        this.updateAPIInfo();
 
         //入参、出参按钮默认不可用
         $("#inPutParamInfo").prop('disabled', true);
@@ -510,11 +511,9 @@ var mario = {
         });
     },
 
-
     //更新API信息
     updateAPIInfo: function () {
         $("#btn_update_api_info_submit").click(function () {
-            // var apiInfoData = getUpdateApiInfoByModel();
             var apiInfoData = getUpdateApiInfoModel();
 
             $.ajax({
@@ -522,7 +521,7 @@ var mario = {
                 dataType: 'json',
                 async: false,
                 data: {"data": JSON.stringify(apiInfoData)},
-                url: "/deleteApi.do",
+                url: "/updateApi.do",
                 success: function (data) {
                     var successFlag = data.successFlag;
                     var resultData = data.resultData;
@@ -539,7 +538,6 @@ var mario = {
             });
         });
     },
-
 
     //删除API
     deleteApi: function (e) {
@@ -629,6 +627,7 @@ function clearUpdateAPIInfoModel() {
 //获取 更新API信息弹窗表单的信息
 function getUpdateApiInfoModel() {
     var apiInfoData = {};
+    apiInfoData.projectName = projectName_own;
     apiInfoData.apiId = $("#update_api_id").val();
     apiInfoData.apiNum = $("#update_APINumber_id").val();
     apiInfoData.apiName = $("#update_APIInterName_id").val();

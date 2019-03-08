@@ -9,10 +9,12 @@ import org.mario.vo.response.RespDeleteApiVO;
 import org.mario.vo.response.RespQueryApiByProtNameVO;
 import org.mario.vo.response.RespQueryInfoByApiNameVO;
 import org.mario.vo.response.RespSaveParamDataVO;
+import org.mario.vo.response.RespUpdateApiInfoVO;
 import org.mario.vo.response.ResultVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,11 +30,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 @RequestMapping(value = "/")
-public class ApiRelatedController extends BasicController{
+public class ApiRelatedController extends BasicController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ApiRelatedController.class);
 
     @Autowired
+    @Qualifier(value = "ApiManageServiceImpl")
     private ApiManageService apiManageService;
 
     public static Gson gson = (new GsonBuilder()).enableComplexMapKeySerialization().create();
@@ -57,7 +60,7 @@ public class ApiRelatedController extends BasicController{
 
         String resultJson = gson.toJson(resultVO);
 
-        super.returnAjaxRequestData(methodName,resultJson,response);
+        super.returnAjaxRequestData(methodName, resultJson, response);
     }
 
     /**
@@ -81,7 +84,7 @@ public class ApiRelatedController extends BasicController{
 
         String resultJson = gson.toJson(resultVO);
 
-        super.returnAjaxRequestData(methodName,resultJson,response);
+        super.returnAjaxRequestData(methodName, resultJson, response);
     }
 
     /**
@@ -105,7 +108,7 @@ public class ApiRelatedController extends BasicController{
 
         String resultJson = gson.toJson(resultVO);
 
-        super.returnAjaxRequestData(methodName,resultJson,response);
+        super.returnAjaxRequestData(methodName, resultJson, response);
     }
 
     /**
@@ -128,7 +131,7 @@ public class ApiRelatedController extends BasicController{
 
         String resultJson = gson.toJson(resultVO);
 
-        super.returnAjaxRequestData(methodName,resultJson,response);
+        super.returnAjaxRequestData(methodName, resultJson, response);
     }
 
     /**
@@ -152,7 +155,7 @@ public class ApiRelatedController extends BasicController{
 
         String resultJson = gson.toJson(resultVO);
 
-        super.returnAjaxRequestData(methodName,resultJson,response);
+        super.returnAjaxRequestData(methodName, resultJson, response);
     }
 
     /**
@@ -170,6 +173,13 @@ public class ApiRelatedController extends BasicController{
 
         ResultVO resultVO = new ResultVO();
         resultVO.setSuccessFlag(NumberEnum.ONE_STR.getNumStr());
+
+        RespUpdateApiInfoVO updateApiInfoVO = apiManageService.updateApiInterface(data);
+        resultVO.setResultData(updateApiInfoVO);
+
+        String resultJson = gson.toJson(resultVO);
+
+        super.returnAjaxRequestData(methodName, resultJson, response);
 
     }
 }
