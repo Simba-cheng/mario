@@ -336,6 +336,10 @@ var mario = {
             $("#inPutParamInfo").removeAttr("disabled");
             $("#outParamInfo").removeAttr("disabled");
             $("#updateParam").removeAttr("disabled");
+            
+            //修改样式
+            $(this).addClass('list-group-item-click').siblings().removeClass('list-group-item-click');
+            
             //清空全局变量中的入参、出参结构数据
             inputParam = "";
             ouputParam = "";
