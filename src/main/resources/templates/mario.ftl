@@ -73,12 +73,14 @@
             // console.log("id : " + e[0].id);
             return e;
         },
-        actions: [{
-            name: '修改API接口',
-            onClick: function (e) {
-                mario.openUpdateApiModel(e);
-            }
-        }, {
+        actions: [
+        //     {
+            //     name: '修改API接口',
+            //     onClick: function (e) {
+            //         mario.openUpdateApiModel(e);
+            //     }
+            // },
+            {
             name: '删除API接口',
             onClick: function (e) {
                 mario.deleteApi(e);
