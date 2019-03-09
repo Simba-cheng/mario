@@ -203,3 +203,7 @@ textarea {
 #api_list_group {
     padding: 10px 6px !important;
 }
+
+.list-group-item-click {
+    background-color: #d89d9d !important;
+}
