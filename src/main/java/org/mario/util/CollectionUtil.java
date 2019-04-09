@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.TreeSet;
 
 /**
@@ -33,6 +34,16 @@ public class CollectionUtil {
      */
     public static <V> ArrayList<V> newArrayListInstance() {
         return new ArrayList<V>();
+    }
+
+    /**
+     * 创建LinedList
+     *
+     * @param <V>
+     * @return
+     */
+    public static <V> LinkedList<V> newLinkedList() {
+        return new LinkedList<V>();
     }
 
     /**
