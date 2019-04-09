@@ -7,6 +7,7 @@ import org.mario.constant.ErrorMsgEnum;
 import org.mario.persistent.ProjectRepository;
 import org.mario.persistent.bean.Project;
 import org.mario.service.ProjectService;
+import org.mario.util.CollectionUtil;
 import org.mario.vo.error.ErrorInfo;
 import org.mario.vo.response.RespHandlerProjectVo;
 import org.mario.vo.response.SearchAllProjectVO;
@@ -16,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,7 +36,7 @@ public class ProjectServiceImpl implements ProjectService {
     public SearchAllProjectVO searchAllProject() {
 
         SearchAllProjectVO allProjectVO = new SearchAllProjectVO();
-        List<String> projectNames = new ArrayList<String>();
+        List<String> projectNames = CollectionUtil.newArrayListInstance();
 
         try {
             List<Project> projects = projectRepository.findAll();

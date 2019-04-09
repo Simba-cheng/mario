@@ -8,6 +8,7 @@ import org.mario.constant.NumberEnum;
 import org.mario.persistent.ApiIntegerRepository;
 import org.mario.persistent.bean.ApiInterface;
 import org.mario.service.ApiManageService;
+import org.mario.util.CollectionUtil;
 import org.mario.util.JsonUtils;
 import org.mario.util.PubUtils;
 import org.mario.vo.error.ErrorInfo;
@@ -27,7 +28,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,7 +46,7 @@ public class ApiManageServiceImpl implements ApiManageService {
     public RespAddApiInterfaceVO addNewApi(String data) {
 
         RespAddApiInterfaceVO addApiInterfaceVO = new RespAddApiInterfaceVO();
-        List<RespApiInfoVO> respApiInfoVOS = new ArrayList<RespApiInfoVO>();
+        List<RespApiInfoVO> respApiInfoVOS = CollectionUtil.newArrayListInstance();
 
         if (null == data) {
             addApiInterfaceVO.setErrorInfo(new ErrorInfo(ErrorMsgEnum.ERR_07.getErrorCode(), ErrorMsgEnum.ERR_07.getErrorMsg()));
@@ -105,7 +105,7 @@ public class ApiManageServiceImpl implements ApiManageService {
             return queryApiByProtNameVO;
         }
 
-        List<RespApiInfoVO> respApiInfoVOS = new ArrayList<RespApiInfoVO>();
+        List<RespApiInfoVO> respApiInfoVOS = CollectionUtil.newArrayListInstance();
         try {
             List<ApiInterface> apiInterfaces = apiIntegerRepository.findAllByProjectName(projectName);
 
