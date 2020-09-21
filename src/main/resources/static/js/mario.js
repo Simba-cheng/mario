@@ -395,7 +395,7 @@ var mario = {
                                 //循环展示API列表
                                 accumulateAPIList(apiInfos);
                             } else {
-                                sweetAlert("异常信息", projectName_own + " 项目中暂时没有API接口", "error");
+                                // sweetAlert("异常信息", projectName_own + " 项目中暂时没有API接口", "error");
                                 clearAllInfo();
                                 clearAPIList();
                             }
