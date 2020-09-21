@@ -120,9 +120,9 @@ var mario = {
     openEditorPopUps: function () {
         $("#amplificationEditorButton").click(function () {
             //填充弹窗中的，顶部文案
-            if (currentParamType == "1") {
+            if (currentParamType === "1") {
                 $("#editorPopUpsModalLabel").html("入参");
-            } else if (currentParamType == "2") {
+            } else if (currentParamType === "2") {
                 $("#editorPopUpsModalLabel").html("出参");
             }
             //显示弹窗
@@ -285,6 +285,10 @@ var mario = {
     //打开编辑API信息的弹窗
     openApiInterfacePop: function () {
         $("#addNewApiInterfaceBut").click(function () {
+            if (isEmpty(projectName_own)) {
+                sweetAlert("异常信息", "请先选择顶部下拉框中的项目，或者请新建项目", "error")
+                return;
+            }
             $("#addApiInfoModal").modal();
         });
     },
@@ -336,10 +340,10 @@ var mario = {
             $("#inPutParamInfo").removeAttr("disabled");
             $("#outParamInfo").removeAttr("disabled");
             $("#updateParam").removeAttr("disabled");
-            
+
             //修改样式
             $(this).addClass('list-group-item-click').siblings().removeClass('list-group-item-click');
-            
+
             //清空全局变量中的入参、出参结构数据
             inputParam = "";
             ouputParam = "";
@@ -395,7 +399,7 @@ var mario = {
                                 //循环展示API列表
                                 accumulateAPIList(apiInfos);
                             } else {
-                                sweetAlert("异常信息", projectName_own + " 项目中暂时没有API接口", "error");
+                                // sweetAlert("异常信息", projectName_own + " 项目中暂时没有API接口", "error");
                                 clearAllInfo();
                                 clearAPIList();
                             }

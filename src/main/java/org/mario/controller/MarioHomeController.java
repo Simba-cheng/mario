@@ -13,14 +13,17 @@ import javax.servlet.http.HttpServletResponse;
  * @create 2019-02-14-23:14
  */
 @Controller
-@RequestMapping(value = "/")
 public class MarioHomeController {
+
+    @RequestMapping(value = "/")
+    public ModelAndView showMarioHome(ModelAndView modelAndView) {
+        modelAndView.setViewName("mario");
+        return modelAndView;
+    }
 
     @GetMapping(value = "/showHome.do")
     public ModelAndView showMarioHome(ModelAndView modelAndView, HttpServletRequest request, HttpServletResponse response) {
-
         modelAndView.setViewName("mario");
-
         return modelAndView;
     }
 
