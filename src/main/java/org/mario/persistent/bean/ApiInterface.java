@@ -1,7 +1,5 @@
 package org.mario.persistent.bean;
 
-import lombok.Data;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +12,6 @@ import javax.persistence.Table;
  * @author CYX
  * @create 2019-02-20-22:19
  */
-@Data
 @Entity
 @Table(name = "apiInterface")
 public class ApiInterface {
@@ -107,5 +104,120 @@ public class ApiInterface {
     }
 
     public ApiInterface() {
+    }
+
+    public Integer getApiId() {
+        return apiId;
+    }
+
+    public void setApiId(Integer apiId) {
+        this.apiId = apiId;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getApiNum() {
+        return apiNum;
+    }
+
+    public void setApiNum(String apiNum) {
+        this.apiNum = apiNum;
+    }
+
+    public String getApiName() {
+        return apiName;
+    }
+
+    public void setApiName(String apiName) {
+        this.apiName = apiName;
+    }
+
+    public String getApiPath() {
+        return apiPath;
+    }
+
+    public void setApiPath(String apiPath) {
+        this.apiPath = apiPath;
+    }
+
+    public String getApiURL() {
+        return apiURL;
+    }
+
+    public void setApiURL(String apiURL) {
+        this.apiURL = apiURL;
+    }
+
+    public String getRequestMethod() {
+        return requestMethod;
+    }
+
+    public void setRequestMethod(String requestMethod) {
+        this.requestMethod = requestMethod;
+    }
+
+    public String getTerminal() {
+        return terminal;
+    }
+
+    public void setTerminal(String terminal) {
+        this.terminal = terminal;
+    }
+
+    public String getCoder() {
+        return coder;
+    }
+
+    public void setCoder(String coder) {
+        this.coder = coder;
+    }
+
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    public String getRequestParam() {
+        return requestParam;
+    }
+
+    public void setRequestParam(String requestParam) {
+        this.requestParam = requestParam;
+    }
+
+    public String getResponseParam() {
+        return responseParam;
+    }
+
+    public void setResponseParam(String responseParam) {
+        this.responseParam = responseParam;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("ApiInterface{");
+        sb.append("apiId=").append(apiId);
+        sb.append(", projectName='").append(projectName).append('\'');
+        sb.append(", apiNum='").append(apiNum).append('\'');
+        sb.append(", apiName='").append(apiName).append('\'');
+        sb.append(", apiPath='").append(apiPath).append('\'');
+        sb.append(", apiURL='").append(apiURL).append('\'');
+        sb.append(", requestMethod='").append(requestMethod).append('\'');
+        sb.append(", terminal='").append(terminal).append('\'');
+        sb.append(", coder='").append(coder).append('\'');
+        sb.append(", product='").append(product).append('\'');
+        sb.append(", requestParam='").append(requestParam).append('\'');
+        sb.append(", responseParam='").append(responseParam).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

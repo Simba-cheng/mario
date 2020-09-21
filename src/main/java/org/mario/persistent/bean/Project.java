@@ -1,7 +1,5 @@
 package org.mario.persistent.bean;
 
-import lombok.Data;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +10,6 @@ import javax.persistence.Table;
  * @author CYX
  * @create 2019-02-20-22:19
  */
-@Data
 @Entity
 @Table(name = "project")
 public class Project {
@@ -36,5 +33,30 @@ public class Project {
     }
 
     public Project() {
+    }
+
+    public Integer getpId() {
+        return pId;
+    }
+
+    public void setpId(Integer pId) {
+        this.pId = pId;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Project{");
+        sb.append("pId=").append(pId);
+        sb.append(", projectName='").append(projectName).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

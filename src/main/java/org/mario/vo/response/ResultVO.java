@@ -1,12 +1,9 @@
 package org.mario.vo.response;
 
-import lombok.Data;
-
 /**
  * @author CYX
  * @create 2019-02-23-13:56
  */
-@Data
 public class ResultVO {
 
     /**
@@ -29,4 +26,28 @@ public class ResultVO {
     public ResultVO() {
     }
 
+    public String getSuccessFlag() {
+        return successFlag;
+    }
+
+    public void setSuccessFlag(String successFlag) {
+        this.successFlag = successFlag;
+    }
+
+    public Object getResultData() {
+        return resultData;
+    }
+
+    public void setResultData(Object resultData) {
+        this.resultData = resultData;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("ResultVO{");
+        sb.append("successFlag='").append(successFlag).append('\'');
+        sb.append(", resultData=").append(resultData);
+        sb.append('}');
+        return sb.toString();
+    }
 }

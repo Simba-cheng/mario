@@ -1,14 +1,11 @@
 package org.mario.vo.response;
 
-import lombok.Data;
-
 import java.util.List;
 
 /**
  * @author CYX
  * @date: 2019/2/27 11:11
  */
-@Data
 public class SearchAllProjectVO extends ResponseVO {
 
     /**
@@ -16,4 +13,19 @@ public class SearchAllProjectVO extends ResponseVO {
      */
     private List<String> projectNames;
 
+    public List<String> getProjectNames() {
+        return projectNames;
+    }
+
+    public void setProjectNames(List<String> projectNames) {
+        this.projectNames = projectNames;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("SearchAllProjectVO{");
+        sb.append("projectNames=").append(projectNames);
+        sb.append('}');
+        return sb.toString();
+    }
 }
